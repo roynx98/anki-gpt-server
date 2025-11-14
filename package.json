@@ -1,0 +1,18 @@
+{
+  "name": "anki-gpt-server",
+  "version": "1.0.0",
+  "description": "Express server for managing learning concepts with scores",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["anki", "learning", "express", "lowdb"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "lowdb": "^7.0.1"
+  }
+}
