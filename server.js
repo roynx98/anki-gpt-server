@@ -17,15 +17,21 @@ if (!db.data || !db.data.concepts) {
   await db.write();
 }
 
-app.post('/add', async (req, res) => {
+app.post('/upsert', async (req, res) => {
   try {
-    const { concept } = req.body;
+    const { concept, learningScore } = req.body;
     
     if (!concept) {
       return res.status(400).json({ error: 'Concept name is required' });
     }
 
-    db.data.concepts[concept] = db.data.concepts[concept] || 0;
+    const score = learningScore !== undefined ? learningScore : 0;
+
+    if (typeof score !== 'number' || score < 0 || score > 1) {
+      return res.status(400).json({ error: 'Learning score must be a number between 0 and 1' });
+    }
+
+    db.data.concepts[concept] = score;
     await db.write();
 
     res.json({ 
