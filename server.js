@@ -31,13 +31,16 @@ app.post('/upsert', async (req, res) => {
       return res.status(400).json({ error: 'Learning score must be a number between 0 and 1' });
     }
 
-    db.data.concepts[concept] = score;
+    db.data.concepts[concept] = {
+      learningScore: score,
+      lastModified: Date.now()
+    };
     await db.write();
 
     res.json({ 
       message: 'Concept added successfully', 
       concept, 
-      learningScore: db.data.concepts[concept] 
+      ...db.data.concepts[concept]
     });
   } catch (error) {
     res.status(500).json({ error: 'Failed to add concept' });

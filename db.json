@@ -1,7 +1,20 @@
 {
   "concepts": {
-    "Html link Fragment Identifier": 0,
-    "CSS: link Pseudo-class": 0,
-    "caca": 0.3
+    "HTML: link Fragment Identifier": {
+      "learningScore": 0,
+      "lastModified": 1763230672357
+    },
+    "CSS: link Pseudo-class": {
+      "learningScore": 0,
+      "lastModified": 1763230672357
+    },
+    "JS: Symbols": {
+      "learningScore": 0,
+      "lastModified": 1763230672357
+    },
+    "ALGO: Backtracking": {
+      "learningScore": 0,
+      "lastModified": 1763230672357
+    }
   }
 }
