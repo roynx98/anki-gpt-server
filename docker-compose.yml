@@ -3,7 +3,7 @@ services:
     build: .
     container_name: anki-gpt-server
     ports:
-      - "3000:3000"
+      - "3002:3000"
     volumes:
       - ./db.json:/app/db.json
     restart: unless-stopped
