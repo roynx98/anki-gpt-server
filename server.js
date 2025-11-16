@@ -7,7 +7,7 @@ const PORT = 3000;
 
 app.use(express.json());
 
-const adapter = new JSONFile('db.json');
+const adapter =  new JSONFile('./data/db.json');
 const db = new Low(adapter, { concepts: {} });
 
 await db.read();
@@ -35,6 +35,8 @@ app.post('/upsert', async (req, res) => {
       learningScore: score,
       lastModified: Date.now()
     };
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
     await db.write();
 
     res.json({ 
@@ -43,6 +45,7 @@ app.post('/upsert', async (req, res) => {
       ...db.data.concepts[concept]
     });
   } catch (error) {
+    console.log('error', error);
     res.status(500).json({ error: 'Failed to add concept' });
   }
 });
